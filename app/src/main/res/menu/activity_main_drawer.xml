@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/status_nav"
+            android:title="@string/status" />
+
+        <item
+            android:id="@+id/Latest_nav"
+            android:title="@string/latest" />
+
+
+        <item
+            android:id="@+id/Trending_nav"
+            android:title="@string/trending" />
+        <item
+            android:id="@+id/cat_nav"
+            android:title="@string/Category" />
+        <item
+            android:id="@+id/status_cat_nav"
+            android:title="@string/StatusCategory" />
+        <item
+            android:id="@+id/gifs_nav"
+            android:title="@string/gif" />
+        <item
+            android:id="@+id/statusSaver"
+
+            android:title="@string/status_saver" />
+
+        <item
+            android:id="@+id/moreApps_nav"
+            android:title="@string/More_apps" />
+
+        <item
+            android:id="@+id/nav_share_app"
+
+            android:title="@string/share" />
+        <item
+            android:id="@+id/nav_privacy_policy"
+
+            android:title="@string/privacyolicy" />
+
+
+    </group>
+</menu>

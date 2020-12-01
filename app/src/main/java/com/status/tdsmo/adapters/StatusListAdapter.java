@@ -220,17 +220,6 @@ public class StatusListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
     public class AdmobNativeHolder extends RecyclerView.ViewHolder {
         private final AdLoader adLoader;
         private UnifiedNativeAd nativeAd;
@@ -283,7 +272,6 @@ public class StatusListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-
     /**
      * Populates a {@link UnifiedNativeAdView} object with data from a given
      * {@link UnifiedNativeAd}.
@@ -321,12 +309,7 @@ public class StatusListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         adView.setStarRatingView(adView.findViewById(R.id.ad_stars));
         adView.setStoreView(adView.findViewById(R.id.ad_store));
         adView.setAdvertiserView(adView.findViewById(R.id.ad_advertiser));
-
-        // The headline is guaranteed to be in every UnifiedNativeAd.
         ((TextView) adView.getHeadlineView()).setText(nativeAd.getHeadline());
-
-        // These assets aren't guaranteed to be in every UnifiedNativeAd, so it's important to
-        // check before trying to display them.
         if (nativeAd.getBody() == null) {
             adView.getBodyView().setVisibility(View.INVISIBLE);
         } else {
@@ -377,26 +360,12 @@ public class StatusListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             ((TextView) adView.getAdvertiserView()).setText(nativeAd.getAdvertiser());
             adView.getAdvertiserView().setVisibility(View.VISIBLE);
         }
-
-        // This method tells the Google Mobile Ads SDK that you have finished populating your
-        // native ad view with this native ad. The SDK will populate the adView's MediaView
-        // with the media content from this native ad.
         adView.setNativeAd(nativeAd);
-
-        // Get the video controller for the ad. One will always be provided, even if the ad doesn't
-        // have a video asset.
         VideoController vc = nativeAd.getVideoController();
-
-        // Updates the UI to say whether or not this ad has a video asset.
         if (vc.hasVideoContent()) {
-            // Create a new VideoLifecycleCallbacks object and pass it to the VideoController. The
-            // VideoController will call methods on this object when events occur in the video
-            // lifecycle.
             vc.setVideoLifecycleCallbacks(new VideoController.VideoLifecycleCallbacks() {
                 @Override
                 public void onVideoEnd() {
-                    // Publishers should allow native ads to complete video playback before
-                    // refreshing or replacing them with another ad in the same UI location.
                     super.onVideoEnd();
                 }
             });

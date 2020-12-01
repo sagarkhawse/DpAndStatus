@@ -9,8 +9,23 @@
         <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
         <string name="admob_banner_ad_id">ca-app-pub-3940256099942544/6300978111</string>
         <string name="admob_interstitial_ad_id">ca-app-pub-3940256099942544/1033173712</string>
-
-<!--    <string name="test_admob_app_id">ca-app-pub-3101293433746581~8741490600</string>-->
+    <string name="privacyolicy">Privacy policy</string>
+    <string name="share">Share</string>
+    <string name="status">Status</string>
+    <string name="latest">Latest</string>
+    <string name="trending">Trending</string>
+    <string name="Category">Category</string>
+    <string name="StatusCategory">Status Category</string>
+    <string name="gif">Gif</string>
+    <string name="More_apps">More Apps</string>
+    <string name="Insufficient_app_permission">Insufficient app permission</string>
+    <string name="Saved_to_gallery">Saved to gallery!</string>
+    <string name="Failed_to_save_to_gallery">Failed to save to gallery</string>
+    <string name="Loading">Loading…</string>
+    <string name="About">About</string>
+    <string name="No_viewer_found">No viewer found</string>
+    <string name="status_saver">WhatsApp Status Saver</string>
+    <!--    <string name="test_admob_app_id">ca-app-pub-3101293433746581~8741490600</string>-->
 <!--    <string name="test_admob_banner_id">ca-app-pub-3101293433746581/5974752033</string>-->
 <!--    <string name="test_admob_interstitial_id">ca-app-pub-3101293433746581/9722425359</string>-->
 </resources>

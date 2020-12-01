@@ -67,7 +67,7 @@ public class StatusListActivity extends AppCompatActivity {
                         statusList = response.body().getRes();
                         Collections.shuffle(statusList);
                         adapter = new StatusListAdapter(StatusListActivity.this, statusList);
-                        recyclerView.setAdapter(adapter);
+                       recyclerView.setAdapter(adapter);
 
                     }
                 }
@@ -87,7 +87,7 @@ public class StatusListActivity extends AppCompatActivity {
                         statusList = response.body().getRes();
                         Collections.shuffle(statusList);
                         adapter = new StatusListAdapter(StatusListActivity.this, statusList);
-                        recyclerView.setAdapter(adapter);
+                       recyclerView.setAdapter(adapter);
 
                     }
                 }

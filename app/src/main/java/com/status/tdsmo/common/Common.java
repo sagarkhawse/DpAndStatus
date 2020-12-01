@@ -7,6 +7,9 @@ import com.status.tdsmo.retrofit.RetrofitClient;
 
 import java.util.List;
 
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 
 public class Common {
     public static boolean isLoginSelected = false;
@@ -20,8 +23,6 @@ public class Common {
     public static  boolean isShareWhatsapp = false;
     public static  boolean isShareFb = false;
     public static  boolean isShareInstagram = false;
-
-
     private static final String BASE_URL = "https://dplove.in/DpStatus/";
 //private static final String BASE_URL = "https://skdeveloperteam101.000webhostapp.com/DpStatus/";
 

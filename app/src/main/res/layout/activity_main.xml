@@ -1,121 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-     <com.google.android.material.appbar.AppBarLayout
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:gravity="center"
-         app:elevation="0dp"
-         android:id="@+id/appbarid">
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="right"
+        android:id="@+id/drawer"
+        tools:context=".MainActivity">
 
-          <RelativeLayout
-              android:layout_width="match_parent"
-              android:layout_height="55sp"
-               >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-               <TextView
-                 android:layout_centerVertical="true"
-                   android:id="@+id/text_view"
-                   android:textStyle="bold"
-                   android:textSize="20sp"
-                   android:textColor="@color/colorWhite"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                    android:text="Dp and Status"
-                    android:layout_marginLeft="20dp"
-                   />
 
-               <LinearLayout
-                   android:layout_alignParentBottom="true"
-                   android:padding="5dp"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:gravity="end|center"
-                    android:layout_toRightOf="@+id/text_view"
-                    android:orientation="horizontal">
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbarid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                android:theme="@style/ThemeOverlay.AppCompat.DayNight.ActionBar"
+                app:expanded="true">
 
-                    <ImageButton
-                        android:foreground="?attr/selectableItemBackground"
-                        android:id="@+id/rating_img_btn"
-                        android:padding="15dp"
-                        android:layout_width="wrap_content"
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsing_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fitsSystemWindows="true"
+                    app:expandedTitleMarginStart="12dp"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="55sp">
+                        <ImageView
+                            android:id="@+id/drawerAccess"
+                            android:layout_width="20dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_drawer"/>
+                        <TextView
+
+                            android:layout_toRightOf="@+id/drawerAccess"
+                            android:id="@+id/text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:text="Dp and Status"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_toRightOf="@+id/text_view"
+                            android:gravity="end|center"
+                            android:orientation="horizontal"
+                            android:padding="5dp">
+
+                            <ImageButton
+                                android:id="@+id/rating_img_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:foreground="?attr/selectableItemBackground"
+                                android:padding="15dp"
+                                android:src="@drawable/ic_star_black_24dp" />
+
+                            <ImageButton
+                                android:id="@+id/share_img_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:foreground="?attr/selectableItemBackground"
+                                android:padding="15dp"
+                                android:src="@drawable/ic_share_black_24dp" />
+
+                            <ImageButton
+                                android:id="@+id/privacy_img_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="2dp"
+                                android:background="@android:color/transparent"
+                                android:foreground="?attr/selectableItemBackground"
+                                android:padding="15dp"
+                                android:src="@drawable/ic_privacy_policy" />
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    app:layout_collapseMode="pin">
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tablayout_id"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_star_black_24dp"
-                        android:background="@android:color/transparent"
-                        />
+                        android:layout_below="@+id/appbarid"
+                        android:background="@color/colorPrimary"
+                        app:tabGravity="fill"
+                        app:tabIndicatorColor="@color/tabindicatorcolor"
+                        app:tabMode="scrollable"
 
-                     <ImageButton
-                         android:foreground="?attr/selectableItemBackground"
-                         android:id="@+id/share_img_btn"
-                         android:padding="15dp"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:src="@drawable/ic_share_black_24dp"
-                   android:background="@android:color/transparent"
-                   />
-                    <ImageButton
-                        android:foreground="?attr/selectableItemBackground"
-                        android:id="@+id/privacy_img_btn"
-                        android:layout_margin="2dp"
-                        android:padding="15dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_privacy_policy"
-                        android:background="@android:color/transparent"
-                      />
-               </LinearLayout>
+                        app:tabSelectedTextColor="@color/tabindicatorcolor"
+                        app:tabTextColor="@color/tabtextcolor" />
+                </LinearLayout>
+            </com.google.android.material.appbar.AppBarLayout>
 
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/view_pager"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
 
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-          </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/adview_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="bottom"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+                <!--          <com.google.android.gms.ads.AdView-->
+                <!--              android:layout_gravity="center"-->
+                <!--              xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+                <!--              android:id="@+id/adView1"-->
+                <!--              android:layout_width="wrap_content"-->
+                <!--              android:layout_height="wrap_content"-->
+                <!--              ads:adSize="BANNER"-->
+                <!--              ads:adUnitId="@string/test_admob_banner_id"/>-->
 
-     </com.google.android.material.appbar.AppBarLayout>
-
-
-     <com.google.android.material.tabs.TabLayout
-android:layout_below="@+id/appbarid"
-         android:background="@color/colorPrimary"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-app:tabGravity="fill"
-         app:tabSelectedTextColor="@color/tabindicatorcolor"
-         app:tabTextColor="@color/tabtextcolor"
-         app:tabIndicatorColor="@color/tabindicatorcolor"
-
-         app:tabMode="scrollable"
-         android:id="@+id/tablayout_id"
-         />
-
-
-     <androidx.viewpager.widget.ViewPager
-         android:layout_below="@+id/tablayout_id"
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:layout_above="@+id/adview_linear_layout"
-         android:id="@+id/view_pager"/>
-     <LinearLayout
-         android:orientation="vertical"
-         android:id="@+id/adview_linear_layout"
-         android:layout_alignParentBottom="true"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-          >
-<!--          <com.google.android.gms.ads.AdView-->
-<!--              android:layout_gravity="center"-->
-<!--              xmlns:ads="http://schemas.android.com/apk/res-auto"-->
-<!--              android:id="@+id/adView1"-->
-<!--              android:layout_width="wrap_content"-->
-<!--              android:layout_height="wrap_content"-->
-<!--              ads:adSize="BANNER"-->
-<!--              ads:adUnitId="@string/test_admob_banner_id"/>-->
-
-     </LinearLayout>
-
-
-</RelativeLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:fitsSystemWindows="true"
+            app:menu="@menu/activity_main_drawer" />
+    </androidx.drawerlayout.widget.DrawerLayout>
+</layout>

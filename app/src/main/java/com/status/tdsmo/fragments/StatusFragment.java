@@ -125,7 +125,7 @@ public class StatusFragment extends Fragment {
                     status.setText(statusList.get(statusList.size() - 1).getStatus());
 //                    Collections.shuffle(statusList);
                     adapter = new StatusListAdapter(getContext(), statusList);
-                    recyclerView.setAdapter(adapter);
+                  //  recyclerView.setAdapter(adapter);
                     progressBar.setVisibility(View.GONE);
                     root.setVisibility(View.VISIBLE);
                 }
