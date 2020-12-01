@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+>
+
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:visibility="gone"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="vertical"
+        app:cardBackgroundColor="@color/colorThree"
+        app:cardCornerRadius="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        app:cardElevation="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                />
+
+            <LinearLayout
+                android:background="@color/colorWhite"
+                android:gravity="center"
+                android:layout_above="@+id/adview_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_margin="5dp"
+                    android:layout_height="30dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_content_copy_black_24dp"
+                    android:id="@+id/fab_copy"
+                    android:elevation="6dp"
+                    android:layout_weight="1"
+                    />
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/share"
+                    android:id="@+id/fab_share"
+                    android:layout_weight="1"
+
+
+                    />
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_margin="5dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/whatsapp"
+                    android:id="@+id/fab_whatsapp"
+                    android:elevation="6dp"
+                    android:layout_weight="1"
+
+                    />
+
+
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_margin="5dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/insta"
+                    android:id="@+id/fab_instagram"
+                    android:elevation="6dp"
+                    android:layout_weight="1"
+
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+<androidx.recyclerview.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/recycler_view"/>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progress_bar"
+        android:visibility="visible"/>
+</LinearLayout>
+</androidx.core.widget.NestedScrollView>

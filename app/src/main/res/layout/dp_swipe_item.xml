@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <ImageView
+        android:adjustViewBounds="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:id="@+id/imageView"/>
+
+    <LinearLayout
+
+
+        android:gravity="center"
+        android:layout_above="@+id/adview_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="50sp"
+            android:layout_margin="5dp"
+            android:layout_height="50sp"
+            android:background="@android:color/transparent"
+           android:src="@drawable/download"
+            android:id="@+id/fab_download"
+            android:elevation="6dp"
+
+            />
+
+        <ImageView
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_margin="5dp"
+            android:src="@drawable/share"
+            android:id="@+id/fab_share"
+
+
+            />
+
+        <ImageView
+            android:layout_width="50sp"
+            android:layout_margin="5dp"
+            android:layout_height="50sp"
+            android:src="@drawable/whatsapp"
+            android:id="@+id/fab_whatsapp"
+            android:elevation="6dp"
+
+            />
+
+        <ImageView
+            android:layout_width="50sp"
+            android:layout_margin="5dp"
+            android:layout_height="50sp"
+            android:src="@drawable/fb"
+            android:id="@+id/fab_fb"
+            android:elevation="6dp"
+
+            />
+
+        <ImageView
+            android:layout_width="50sp"
+            android:layout_margin="5dp"
+            android:layout_height="50sp"
+            android:src="@drawable/insta"
+            android:id="@+id/fab_instagram"
+            android:elevation="6dp"
+
+            />
+    </LinearLayout>
+</LinearLayout>

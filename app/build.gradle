@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+/**
+ * This app is developed by Sagar Khawse
+ *
+ * Contact this developer at gmail - sagar.khawse@gmail.com
+ * Contact Number :- +917385663427
+ * fiverr profile :- {@link "https://www.fiverr.com/s2/c1746e55d6"}
+ *
+ * Date : - 6 march 2020
+ */
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.status.tdsmo"
+        minSdkVersion 18
+        targetSdkVersion 29
+        versionCode 8
+        versionName "3.5"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-core:17.2.3'
+    implementation 'com.google.firebase:firebase-analytics:17.2.3'
+    implementation 'com.google.firebase:firebase-messaging:20.2.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+
+    //material design
+    implementation 'com.google.android.material:material:1.1.0'
+    //dexter library for easy permissions
+    implementation 'com.karumi:dexter:6.0.2'
+    //RetroFit
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    //paging library
+    implementation 'android.arch.paging:runtime:1.0.1'
+
+    //adding glide
+    implementation "com.github.bumptech.glide:glide:4.10.0"
+    annotationProcessor "com.github.bumptech.glide:compiler:4.10.0"
+
+    //Admob ads
+    implementation 'com.google.android.gms:play-services-ads:19.0.0'
+
+    implementation 'com.android.support:multidex:1.0.3'
+
+    //GSON
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    //Swipe Card
+    implementation 'com.lorentzos.swipecards:library:1.0.9@aar'
+}

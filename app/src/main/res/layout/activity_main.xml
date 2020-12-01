@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+     <com.google.android.material.appbar.AppBarLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:gravity="center"
+         app:elevation="0dp"
+         android:id="@+id/appbarid">
+
+          <RelativeLayout
+              android:layout_width="match_parent"
+              android:layout_height="55sp"
+               >
+
+               <TextView
+                 android:layout_centerVertical="true"
+                   android:id="@+id/text_view"
+                   android:textStyle="bold"
+                   android:textSize="20sp"
+                   android:textColor="@color/colorWhite"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                    android:text="Dp and Status"
+                    android:layout_marginLeft="20dp"
+                   />
+
+               <LinearLayout
+                   android:layout_alignParentBottom="true"
+                   android:padding="5dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="end|center"
+                    android:layout_toRightOf="@+id/text_view"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:foreground="?attr/selectableItemBackground"
+                        android:id="@+id/rating_img_btn"
+                        android:padding="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_star_black_24dp"
+                        android:background="@android:color/transparent"
+                        />
+
+                     <ImageButton
+                         android:foreground="?attr/selectableItemBackground"
+                         android:id="@+id/share_img_btn"
+                         android:padding="15dp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/ic_share_black_24dp"
+                   android:background="@android:color/transparent"
+                   />
+                    <ImageButton
+                        android:foreground="?attr/selectableItemBackground"
+                        android:id="@+id/privacy_img_btn"
+                        android:layout_margin="2dp"
+                        android:padding="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_privacy_policy"
+                        android:background="@android:color/transparent"
+                      />
+               </LinearLayout>
+
+
+
+          </RelativeLayout>
+
+     </com.google.android.material.appbar.AppBarLayout>
+
+
+     <com.google.android.material.tabs.TabLayout
+android:layout_below="@+id/appbarid"
+         android:background="@color/colorPrimary"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+app:tabGravity="fill"
+         app:tabSelectedTextColor="@color/tabindicatorcolor"
+         app:tabTextColor="@color/tabtextcolor"
+         app:tabIndicatorColor="@color/tabindicatorcolor"
+
+         app:tabMode="scrollable"
+         android:id="@+id/tablayout_id"
+         />
+
+
+     <androidx.viewpager.widget.ViewPager
+         android:layout_below="@+id/tablayout_id"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_above="@+id/adview_linear_layout"
+         android:id="@+id/view_pager"/>
+     <LinearLayout
+         android:orientation="vertical"
+         android:id="@+id/adview_linear_layout"
+         android:layout_alignParentBottom="true"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+          >
+<!--          <com.google.android.gms.ads.AdView-->
+<!--              android:layout_gravity="center"-->
+<!--              xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+<!--              android:id="@+id/adView1"-->
+<!--              android:layout_width="wrap_content"-->
+<!--              android:layout_height="wrap_content"-->
+<!--              ads:adSize="BANNER"-->
+<!--              ads:adUnitId="@string/test_admob_banner_id"/>-->
+
+     </LinearLayout>
+
+
+</RelativeLayout>
