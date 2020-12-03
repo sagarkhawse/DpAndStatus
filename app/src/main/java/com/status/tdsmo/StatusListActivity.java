@@ -34,7 +34,7 @@ import retrofit2.Response;
  * <p>
  * Date : - 6 march 2020
  */
-public class StatusListActivity extends AppCompatActivity {
+public class StatusListActivity extends AppCompatActivity  {
     private StatusListAdapter adapter;
     private List<Image> statusList;
     private DpStatusApi mService;
@@ -66,9 +66,9 @@ public class StatusListActivity extends AppCompatActivity {
                     if (!response.body().isError()) {
                         statusList = response.body().getRes();
                         Collections.shuffle(statusList);
-                        adapter = new StatusListAdapter(StatusListActivity.this, statusList);
+                       adapter = new StatusListAdapter(StatusListActivity.this, statusList);
                        recyclerView.setAdapter(adapter);
-
+                        Toast.makeText(StatusListActivity.this, "" + "List Status", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -88,7 +88,7 @@ public class StatusListActivity extends AppCompatActivity {
                         Collections.shuffle(statusList);
                         adapter = new StatusListAdapter(StatusListActivity.this, statusList);
                        recyclerView.setAdapter(adapter);
-
+                        Toast.makeText(StatusListActivity.this, "" + "List Status", Toast.LENGTH_SHORT).show();
                     }
                 }
 

@@ -22,7 +22,6 @@ public class WhatsappStatusSaver extends AppCompatActivity implements Permission
         setContentView(R.layout.status_saver_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         new PermissionUtils(this, this, this).begin();
     }
 

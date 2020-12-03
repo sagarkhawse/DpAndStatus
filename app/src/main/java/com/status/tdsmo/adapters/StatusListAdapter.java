@@ -203,6 +203,15 @@ public class StatusListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
         return type;
     }
+
+    public void UpdateList(List<Image> statusList) {
+        this.mList.addAll(statusList);
+        notifyDataSetChanged();
+    }
+
+    public void addLoading() {
+    }
+
     static class TextViewHolder extends RecyclerView.ViewHolder {
         TextView status;
         ImageView fab_copy, fab_share, fab_whatsapp, fab_instagram;
@@ -221,7 +230,7 @@ public class StatusListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
 
     public class AdmobNativeHolder extends RecyclerView.ViewHolder {
-        private final AdLoader adLoader;
+        public final AdLoader adLoader;
         private UnifiedNativeAd nativeAd;
         private FrameLayout frameLayout;
 

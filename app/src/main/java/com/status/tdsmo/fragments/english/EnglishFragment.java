@@ -1,4 +1,4 @@
-package com.status.tdsmo.fragments;
+package com.status.tdsmo.fragments.english;
 
 
 import android.os.Bundle;

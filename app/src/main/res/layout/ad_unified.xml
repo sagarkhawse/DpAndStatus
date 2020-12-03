@@ -1,3 +1,4 @@
+<layout>
 <com.google.android.gms.ads.formats.UnifiedNativeAdView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -172,4 +173,4 @@
             android:background="@color/colorFive"
             />
     </RelativeLayout>
-</com.google.android.gms.ads.formats.UnifiedNativeAdView>
+</com.google.android.gms.ads.formats.UnifiedNativeAdView></layout>

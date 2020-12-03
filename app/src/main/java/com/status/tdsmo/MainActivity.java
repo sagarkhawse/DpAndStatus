@@ -3,7 +3,6 @@ package com.status.tdsmo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.viewpager.widget.ViewPager;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -16,9 +15,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -31,22 +28,20 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.status.tdsmo.adapters.ViewPagerAdapter;
 import com.status.tdsmo.common.Common;
 import com.status.tdsmo.databinding.ActivityMainBinding;
-import com.status.tdsmo.fragments.CategoryFragment;
-import com.status.tdsmo.fragments.EnglishFragment;
+import com.status.tdsmo.fragments.catogry.CategoryFragment;
+import com.status.tdsmo.fragments.english.EnglishFragment;
 
-import com.status.tdsmo.fragments.HomeFragment;
-import com.status.tdsmo.fragments.MoreAppsFragment;
-import com.status.tdsmo.fragments.StatusFragment;
-import com.status.tdsmo.fragments.TrendingFragment;
+import com.status.tdsmo.fragments.home.HomeFragment;
+import com.status.tdsmo.fragments.moreapps.MoreAppsFragment;
+import com.status.tdsmo.fragments.statusFragment.StatusFragment;
+import com.status.tdsmo.fragments.trending.TrendingFragment;
 import com.status.tdsmo.models.Image;
 import com.status.tdsmo.retrofit.DpStatusApi;
 import com.status.tdsmo.statusSaver.WhatsappStatusSaver;

@@ -57,5 +57,9 @@ public interface DpStatusApi {
     @GET("get_all_status.php")
     Call<DpDataResponse> getAllStatus();
 
+    @FormUrlEncoded
+    @POST("get_status_paginate.php")
+    Call<DpDataResponse> getAllStatus(@Field("page") String page);
+
 
 }

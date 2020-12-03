@@ -1,4 +1,4 @@
-package com.status.tdsmo.fragments;
+package com.status.tdsmo.fragments.statusFragment;
 
 
 import android.content.ClipData;
@@ -10,9 +10,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,14 +32,19 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.status.tdsmo.MainActivity;
 import com.status.tdsmo.R;
 import com.status.tdsmo.adapters.CategoryStatus;
 import com.status.tdsmo.adapters.HindiCategoryStatusAdapter;
 import com.status.tdsmo.adapters.StatusListAdapter;
 import com.status.tdsmo.common.Common;
+import com.status.tdsmo.fragments.statusFragment.adapter.StatusAdapter;
+import com.status.tdsmo.fragments.statusFragment.viewmodel.StatusNav;
+import com.status.tdsmo.fragments.statusFragment.viewmodel.StatusViewModel;
 import com.status.tdsmo.models.DpDataResponse;
 import com.status.tdsmo.models.Image;
 import com.status.tdsmo.retrofit.DpStatusApi;
+import com.status.tdsmo.utils.PaginationListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,7 +54,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.nfc.tech.MifareUltralight.PAGE_SIZE;
 import static androidx.constraintlayout.widget.Constraints.TAG;
+import static com.status.tdsmo.utils.PaginationListener.PAGE_START;
 
 /**
  * This app is developed by Sagar Khawse
@@ -55,16 +67,20 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
  * <p>
  * Date : - 6 march 2020
  */
-public class StatusFragment extends Fragment {
+public class StatusFragment extends Fragment implements StatusNav {
     private RecyclerView recyclerView;
     private StatusListAdapter adapter;
-    private List<Image> statusList;
+    private List<Image> statusList = new ArrayList<>();
+    private StatusViewModel viewModel;
+    private StatusAdapter statusAdapter;
     private static final String TAG = "StatusFragment";
     TextView status;
     ImageView fab_copy, fab_share, fab_whatsapp, fab_instagram;
     InterstitialAd mInterstitialAd;
     ProgressBar progressBar;
     CardView root;
+    DpStatusApi mService;
+    PagedList<Image> getStatusList;
 
     public StatusFragment() {
         // Required empty public constructor
@@ -76,11 +92,10 @@ public class StatusFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_hindi, container, false);
+        viewModel = ViewModelProviders.of(this).get(StatusViewModel.class);
+        viewModel.LoadPaging(this);
         recyclerView = view.findViewById(R.id.recycler_view);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        statusList = new ArrayList<>();
-        DpStatusApi mService = Common.getAPI();
+        mService = Common.getAPI();
         status = view.findViewById(R.id.status);
         fab_copy = view.findViewById(R.id.fab_copy);
         fab_share = view.findViewById(R.id.fab_share);
@@ -88,6 +103,7 @@ public class StatusFragment extends Fragment {
         fab_instagram = view.findViewById(R.id.fab_instagram);
         progressBar = view.findViewById(R.id.progress_bar);
         root = view.findViewById(R.id.root);
+
         MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -96,48 +112,19 @@ public class StatusFragment extends Fragment {
         try {
             mInterstitialAd = new InterstitialAd(getContext());
             mInterstitialAd.setAdUnitId(Common.interstitial);
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
-            Log.d(TAG, "onCreateView: interstitial ad "+e.getMessage());
+            Log.d(TAG, "onCreateView: interstitial ad " + e.getMessage());
         }
-
-
-        mService.getAllStatus().enqueue(new Callback<DpDataResponse>() {
+        statusAdapter=new StatusAdapter(getContext());
+        recyclerView.setAdapter(statusAdapter);
+        viewModel.getStatusList().observe((MainActivity)getContext(), new Observer<PagedList<Image>>() {
             @Override
-            public void onResponse(@NonNull Call<DpDataResponse> call, @NonNull Response<DpDataResponse> response) {
-                assert response.body() != null;
-                if (!response.body().isError()) {
-                    List<Image> list = response.body().getRes();
-
-                    for (int i=0; i<list.size(); i++){
-                        if (i % 20 == 0){
-                            Log.d(TAG, "onResponse: view type 6 Admob native ad view");
-                            statusList.add(new Image("adview").setViewType(6));
-                        }else {
-                            Log.d(TAG, "onResponse: status list");
-                            statusList.add(new Image(list.get(i).getStatus()).setViewType(0));
-                        }
-                    }
-
-
-
-
-                    status.setText(statusList.get(statusList.size() - 1).getStatus());
-//                    Collections.shuffle(statusList);
-                    adapter = new StatusListAdapter(getContext(), statusList);
-                  //  recyclerView.setAdapter(adapter);
-                    progressBar.setVisibility(View.GONE);
-                    root.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<DpDataResponse> call, @NonNull Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
-
+            public void onChanged(PagedList<Image> list) {
+                getStatusList=list;
+                statusAdapter.submitList(getStatusList);
             }
         });
-
 
         fab_share.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,9 +163,6 @@ public class StatusFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 try {
-
-
-
                     ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
                     ClipData clip = ClipData.newPlainText("text", status.getText().toString());
                     clipboard.setPrimaryClip(clip);
@@ -189,14 +173,41 @@ public class StatusFragment extends Fragment {
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Log.d(TAG, "onClick: "+e.getMessage());
+                    Log.d(TAG, "onClick: " + e.getMessage());
                 }
-
             }
         });
-
-
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+
+    @Override
+    public void setProgress(final boolean b) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                if(b){
+                    progressBar.setVisibility(View.VISIBLE);
+                }else {
+                    progressBar.setVisibility(View.GONE);
+                    root.setVisibility(View.GONE);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void setMessage(final String server_not_responding) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getContext(), server_not_responding, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }

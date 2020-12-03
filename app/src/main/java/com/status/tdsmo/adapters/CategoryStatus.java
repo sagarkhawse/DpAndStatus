@@ -16,44 +16,44 @@ import com.status.tdsmo.StatusListActivity;
 import com.status.tdsmo.models.Image;
 
 import java.util.List;
+
 /**
  * This app is developed by Sagar Khawse
- *
+ * <p>
  * Contact this developer at gmail - sagar.khawse@gmail.com
  * Contact Number :- +917385663427
  * fiverr profile :- {@link "https://www.fiverr.com/s2/c1746e55d6"}
- *
+ * <p>
  * Date : - 6 march 2020
  */
-public class CategoryStatus extends RecyclerView.Adapter<CategoryStatus.TextViewHolder>{
-Context mContext;
-List<Image> mList;
+public class CategoryStatus extends RecyclerView.Adapter<CategoryStatus.TextViewHolder> {
+    Context mContext;
+    List<Image> mList;
 
     public CategoryStatus(Context context, List<Image> list) {
-      mContext = context;
-       mList = list;
+        mContext = context;
+        mList = list;
     }
 
     @NonNull
     @Override
     public TextViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-      View view = LayoutInflater.from(mContext).inflate(R.layout.category_status,parent,false);
-      return new TextViewHolder(view);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.category_status, parent, false);
+        return new TextViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull TextViewHolder holder, int position) {
-final Image data = mList.get(position);
-holder.title.setText(data.getTitle());
-holder.itemView.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Intent intent = new Intent(mContext, StatusListActivity.class);
-        intent.putExtra("category",data.getTitle());
-        mContext.startActivity(intent);
-    }
-});
-
+        final Image data = mList.get(position);
+        holder.title.setText(data.getTitle());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, StatusListActivity.class);
+                intent.putExtra("category", data.getTitle());
+                mContext.startActivity(intent);
+            }
+        });
 
 
     }
@@ -63,7 +63,7 @@ holder.itemView.setOnClickListener(new View.OnClickListener() {
         return mList.size();
     }
 
-    public  class TextViewHolder extends RecyclerView.ViewHolder{
+    public class TextViewHolder extends RecyclerView.ViewHolder {
         TextView title;
 
 
