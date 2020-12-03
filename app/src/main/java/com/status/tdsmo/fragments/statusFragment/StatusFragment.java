@@ -195,7 +195,7 @@ public class StatusFragment extends Fragment implements StatusNav {
                     progressBar.setVisibility(View.VISIBLE);
                 }else {
                     progressBar.setVisibility(View.GONE);
-                    root.setVisibility(View.VISIBLE);
+                    root.setVisibility(View.GONE);
                 }
             }
         });
