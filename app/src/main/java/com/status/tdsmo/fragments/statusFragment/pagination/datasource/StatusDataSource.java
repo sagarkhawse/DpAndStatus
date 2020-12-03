@@ -47,6 +47,7 @@ public class StatusDataSource extends PageKeyedDataSource<Long, Image> {
                         if (response != null && !response.isError()) {
                             if (response.getRes() != null && response.getRes().size() > 0) {
                                 PAGE_COUNT = PAGE_COUNT + 1;
+                                statusNav.setListEndStatus(response.getRes().get(response.getRes().size()-1));
                                 for (int i = 0; i < response.getRes().size(); i++) {
                                     if (i % 20 == 0) {
 
@@ -90,6 +91,7 @@ public class StatusDataSource extends PageKeyedDataSource<Long, Image> {
                         if (response != null && !response.isError()) {
                             if (response.getRes() != null && response.getRes().size() > 0) {
                                 PAGE_COUNT = PAGE_COUNT + 1;
+                                statusNav.setListEndStatus(response.getRes().get(response.getRes().size()-1));
                                 for (int i = 0; i < response.getRes().size(); i++) {
                                     if (i % 20 == 0) {
 

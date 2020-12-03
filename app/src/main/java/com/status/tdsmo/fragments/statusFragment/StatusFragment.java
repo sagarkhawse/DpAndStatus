@@ -195,7 +195,7 @@ public class StatusFragment extends Fragment implements StatusNav {
                     progressBar.setVisibility(View.VISIBLE);
                 }else {
                     progressBar.setVisibility(View.GONE);
-                    root.setVisibility(View.GONE);
+                    root.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -209,5 +209,10 @@ public class StatusFragment extends Fragment implements StatusNav {
                 Toast.makeText(getContext(), server_not_responding, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void setListEndStatus(Image image) {
+        status.setText(image.getStatus());
     }
 }
